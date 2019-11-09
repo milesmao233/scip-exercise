@@ -12,4 +12,21 @@
             result
             (iter (next a) (* (term a) result))))
     (iter a 1))
-        
+
+
+; 递归版本
+(define (expt b n)
+    (if (= n 0)
+        1
+        (* b (expt b (- n 1)))))
+
+; 循环版本
+(define (expt b n)
+    (expt-iter b n 1))
+
+(define (expt-iter b counter product)
+    (if (= counter 0)
+        product
+        (expt-iter b
+                   (- counter 1)
+                   (* b product))))
